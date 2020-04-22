@@ -1,16 +1,11 @@
 import React from 'react';
 
-const style = {
-  Note: {
-  }
-}
-
 function Note(props) {
   return (
     <div className="card">
       <div className="card-content">
         <span className="card-title">{props.name}</span>
-        <span>Cool Date</span>
+        <span>{new Date(props.modified).toString()}</span>
       </div>
     </div>
   );
