@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link, useParams} from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 import Main from "../components/Main";
 import Container from "../components/Container";
@@ -6,19 +7,19 @@ import noteData from "../noteData";
 import Note from "../components/Note";
 
 function NoteView() {
-  const selectedFolderId = noteData.folders[2].id;
-  const selectedFolderName = noteData.folders[2].name;
-  const note = noteData.notes[0]
+  const { id: selectedNoteId  } = useParams();
+  const note = noteData.notes.find(n => n.id === selectedNoteId)
+  const folderName = noteData.folders.find(f => f.id === note.folderId).name;
   return (
     <Container>
       <Sidebar>
         <div style={{padding: '15px'}}>
-          <a className="waves-effect waves-light btn">Add Note</a>
-          <h4>{selectedFolderName}</h4>
+          <Link to="/" className="waves-effect waves-light btn" >Go Back</Link>
+          <h4>{folderName}</h4>
         </div>
       </Sidebar>
       <Main>
-        <Note name={note.name} modified={note.modified} />
+        <Note {...note}/>
         <p>{note.content}</p>
       </Main>
     </Container>

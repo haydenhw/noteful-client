@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link, useParams} from "react-router-dom";
 
 const style = {
   sidebar: {
@@ -9,9 +10,17 @@ const style = {
 }
 
 function FolderList(props) {
+  const { id: selectedFolderId  } = useParams();
   const folderList = props.folders.map(f => {
-      const folderItemStyle = { backgroundColor: f.id === props.selectedFolderId ?  'lightgrey': '' };
-      return <li style={folderItemStyle} key={f.id}><a href="#!">{f.name}</a></li>;
+      const folderItemStyle = { backgroundColor: f.id === selectedFolderId ?  'lightgrey': '' };
+    return (
+      <li style={folderItemStyle} key={f.id}>
+        <Link to={`/folder/${f.id}`}>
+          {f.name}
+        </Link>
+      </li>
+    );
+
     }
   );
   return (

@@ -1,4 +1,5 @@
 import React from 'react';
+import {useParams} from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 import Main from "../components/Main";
 import FolderList from "../components/FolderList";
@@ -7,7 +8,7 @@ import NoteList from "../components/NoteList";
 import noteData from "../noteData";
 
 function FolderView() {
-  const selectedFolderId = noteData.folders[2].id;
+  const { id: selectedFolderId  } = useParams();
   const notes = noteData.notes.filter(n => n.folderId === selectedFolderId);
   return (
     <Container>

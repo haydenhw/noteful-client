@@ -9,7 +9,7 @@ const style = {
 }
 
 function NoteList(props) {
-  const noteList = props.notes.map(n => <Note key={n.id} name={n.name} modified={n.modified} />)
+  const noteList = props.notes.map(n => <Note key={n.id} {...n} />)
   return (
     <div className="notes">
       <div style={style.noteListWrap}>
