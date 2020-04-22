@@ -7,13 +7,15 @@ import NoteList from "../components/NoteList";
 import noteData from "../noteData";
 
 function FolderView() {
+  const selectedFolderId = noteData.folders[2].id;
+  const notes = noteData.notes.filter(n => n.folderId === selectedFolderId);
   return (
     <Container>
       <Sidebar>
-        <FolderList folders={noteData.folders} selectedFolderId={noteData.folders[2].id}/>
+        <FolderList folders={noteData.folders} selectedFolderId={selectedFolderId}/>
       </Sidebar>
       <Main>
-        <NoteList notes={noteData.notes} />
+        <NoteList notes={notes}/>
       </Main>
     </Container>
   );

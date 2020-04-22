@@ -10,7 +10,7 @@ function MainView() {
   return (
     <Container>
       <Sidebar>
-        <FolderList folders={noteData.folders} selectedFolderId={noteData.folders[2].id}/>
+        <FolderList folders={noteData.folders}/>
       </Sidebar>
       <Main>
         <NoteList notes={noteData.notes} />
@@ -19,3 +19,4 @@ function MainView() {
   );
 }
 
+export default MainView;
