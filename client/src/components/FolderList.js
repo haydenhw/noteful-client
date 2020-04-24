@@ -7,19 +7,19 @@ const style = {
     position: 'static',
     height: '100%',
   }
-}
+};
 
 function FolderList(props) {
-  const { id: selectedFolderId  } = useParams();
+  const {id: selectedFolderId} = useParams();
   const folderList = props.folders.map(f => {
-      const folderItemStyle = { backgroundColor: f.id === selectedFolderId ?  'lightgrey': '' };
-    return (
-      <li style={folderItemStyle} key={f.id}>
-        <Link to={`/folder/${f.id}`}>
-          {f.name}
-        </Link>
-      </li>
-    );
+      const listItemStyle = {backgroundColor: f.id === selectedFolderId ? 'lightgrey' : ''};
+      return (
+        <li style={listItemStyle} key={f.id}>
+          <Link to={`/folder/${f.id}`}>
+            {f.name}
+          </Link>
+        </li>
+      );
 
     }
   );
@@ -27,7 +27,9 @@ function FolderList(props) {
     <ul style={style.sidebar} className="sidenav sidenav-fixed">
       {folderList}
       <li>
-        <a className="waves-effect waves-light btn">Add Folder</a>
+        <div style={{paddingLeft: '15px'}}>
+          <a className="waves-effect waves-light btn">Add Folder</a>
+        </div>
       </li>
     </ul>
   );
