@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 
 const style = {
   nav: {
@@ -10,7 +11,7 @@ function Nav() {
   return (
     <nav>
       <div style={style.nav} className="nav-wrapper">
-        <a href="#" className="brand-logo">Noteful</a>
+        <Link className="brand-logo" to='/'>Noteful</Link>
       </div>
     </nav>
   );

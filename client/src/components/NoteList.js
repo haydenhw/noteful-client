@@ -15,7 +15,7 @@ function NoteList(props) {
       <div style={style.noteListWrap}>
         {noteList}
       </div>
-      <a className="waves-effect waves-light btn">Add Note</a>
+      <button className="waves-effect waves-light btn">Add Note</button>
     </div>
   );
 }
