@@ -4,16 +4,17 @@ import Main from "../components/Main";
 import FolderList from "../components/FolderList";
 import Container from "../components/Container";
 import NoteList from "../components/NoteList";
-import noteData from "../noteData";
+import {useStateValue} from "../context";
 
 function MainView() {
+  const [{notes}] = useStateValue();
   return (
     <Container>
       <Sidebar>
-        <FolderList folders={noteData.folders}/>
+        <FolderList />
       </Sidebar>
       <Main>
-        <NoteList notes={noteData.notes} />
+        <NoteList notes={notes} />
       </Main>
     </Container>
   );

@@ -1,4 +1,5 @@
 import React from 'react';
+import ErrorBoundary from "./ErrorBoundary";
 
 const style = {
   sidebarWrapper: {
@@ -9,9 +10,11 @@ const style = {
 
 function Sidebar(props) {
   return (
-    <div style={style.sidebarWrapper}>
-      {props.children}
-    </div>
+    <ErrorBoundary>
+      <div style={style.sidebarWrapper}>
+        {props.children}
+      </div>
+    </ErrorBoundary>
   );
 }
 

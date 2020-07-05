@@ -1,7 +1,6 @@
 import React from 'react';
-import {Link, useParams} from "react-router-dom";
-import {useStateValue} from "../index";
-import api from '../api';
+import {Link, useParams, useHistory} from "react-router-dom";
+import {useStateValue} from "../context";
 
 const style = {
   sidebar: {
@@ -11,27 +10,14 @@ const style = {
   }
 };
 
-let folderId = 1;
-const generateMockFolder = () => {
-  return {
-    "id": folderId++,
-    "name": "Folder " + Math.floor(Math.random() * 10000),
-  }
-}
-
 function FolderList() {
-  const [{folders}, dispatch] = useStateValue();
-  const {id: selectedFolderId} = useParams();
-  const createFolder = () => {
-    const newFolder = generateMockFolder();
-    dispatch({
-      type: 'addFolder',
-      newFolder
-    })
-
-    api.createFolder(newFolder);
+  const history = useHistory();
+  const routeToAddFolderView = () => {
+    history.push('/add-folder')
   }
-  // this is folders fro sttate instead of props
+
+  const [{folders}] = useStateValue();
+  const {id: selectedFolderId} = useParams();
   const folderList = folders.map(f => {
       const listItemStyle = {backgroundColor: f.id === selectedFolderId ? 'lightgrey' : ''};
       return (
@@ -50,7 +36,7 @@ function FolderList() {
       <li>
         <div style={{paddingLeft: '15px'}}>
           <button className="waves-effect waves-light btn"
-                  onClick={createFolder}
+                  onClick={routeToAddFolderView }
           >Add Folder
           </button>
         </div>

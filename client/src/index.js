@@ -1,58 +1,13 @@
-import React, {createContext, useContext, useReducer} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-
-const StateContext = createContext();
-const StateProvider = ({reducer, initialState, children}) => (
-  <StateContext.Provider value={useReducer(reducer, initialState)}>
-    {children}
-  </StateContext.Provider>
-);
-
-export const useStateValue = () => useContext(StateContext);
-
-const initialState = {
-  folders: [],
-  notes: []
-};
-
-const reducer = (state, action) => {
-  switch (action.type) {
-    case 'loadFolders':
-      return {
-        ...state,
-        folders: action.folders,
-      };
-    case 'addFolder':
-      return {
-        ...state,
-        folders: [...state.folders, action.newFolder]
-      };
-    case 'deleteFolder':
-      return {
-        ...state,
-        folders: state.folders.filter(folder => folder.id !== action.id)
-      };
-    case 'addNote':
-      return {
-        ...state,
-        notes: [...state.notes, action.newNote]
-      };
-    case 'deleteNote':
-      return {
-        ...state,
-        notes: state.notes.filter(note => note.id !== action.id)
-      };
-    default:
-      return state;
-  }
-};
+import {StateProvider} from "./context";
 
 ReactDOM.render(
   <React.StrictMode>
-    <StateProvider initialState={initialState} reducer={reducer}>
+    <StateProvider>
       <App/>
     </StateProvider>
   </React.StrictMode>,

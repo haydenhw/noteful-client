@@ -1,4 +1,5 @@
 import React from 'react';
+import ErrorBoundary from "./ErrorBoundary";
 
 const style = {
   main: {
@@ -9,9 +10,11 @@ const style = {
 
 function Main(props) {
   return (
-    <main style={style.main}>
-      {props.children}
-    </main>
+    <ErrorBoundary>
+      <main style={style.main}>
+        {props.children}
+      </main>
+    </ErrorBoundary>
   );
 }
 

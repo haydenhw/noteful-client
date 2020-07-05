@@ -1,5 +1,5 @@
 import axios from 'axios';
-const API_ROOT = 'http://localhost:8000/api';
+const API_ROOT = 'http://localhost:9090';
 
 const requests = {
   get(url) {
@@ -28,6 +28,18 @@ const api = {
   },
   deleteFolder(id) {
     return requests.delete(`/folders/${id}`);
+  },
+  fetchNotes() {
+    return requests.get('/notes');
+  },
+  createNote(newNote) {
+    return requests.post('/notes', newNote);
+  },
+  updateNote(id) {
+    return requests.patch(`/notes/${id}`);
+  },
+  deleteNote(id) {
+    return requests.delete(`/notes/${id}`);
   },
 };
 
