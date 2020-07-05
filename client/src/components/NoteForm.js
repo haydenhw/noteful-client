@@ -144,5 +144,6 @@ class NoteForm extends Component {
 
 NoteForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
+  title: PropTypes.string,
 }
 export default NoteForm;

@@ -78,6 +78,7 @@ class FolderForm extends Component {
 
 FolderForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
+  title: PropTypes.string,
 }
 
 export default FolderForm;
