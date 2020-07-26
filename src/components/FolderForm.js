@@ -59,7 +59,7 @@ class FolderForm extends Component {
           {this.state.name.touched && <ValidationError message={nameError}/>}
         </div>
         <div>
-          <button type="reset" className="waves-effect waves-light btn">
+          <button onClick={this.props.onCancelClick} type="reset" className="waves-effect waves-light btn">
             Cancel
           </button>
           <button

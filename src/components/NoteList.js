@@ -37,7 +37,7 @@ function NoteList(props) {
       <div style={style.noteListWrap}>
         {noteList}
       </div>
-      <button onClick={routeToAddNotesView } className="waves-effect waves-light btn">Add Note</button>
+      <button onClick={routeToAddNotesView} className="waves-effect waves-light btn">Add Note</button>
     </div>
   );
 }

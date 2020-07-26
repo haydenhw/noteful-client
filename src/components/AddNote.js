@@ -6,10 +6,10 @@ import {useStateValue} from "../context";
 import api from "../api";
 
 const tryToAddNote = async (dispatch, history, newNote) => {
-  await api.createNote(newNote)
+  const savedNote = await api.createNote(newNote)
   dispatch({
     type: 'addNote',
-    newNote
+    newNote: savedNote
   })
 
   history.push('/')
@@ -31,7 +31,7 @@ function AddNote() {
   }
 
   return (
-    <NoteForm title="New Note" folders={folders} onSubmit={addNote}/>
+    <NoteForm title="New Note" folders={folders} onSubmit={addNote} onCancelClick={() => history.push('/')} />
   );
 }
 

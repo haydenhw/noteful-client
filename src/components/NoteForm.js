@@ -124,7 +124,7 @@ class NoteForm extends Component {
           {this.state.content.touched && <ValidationError message={contentError}/>}
         </div>
         <div>
-          <button type="reset" className="waves-effect waves-light btn">
+          <button onClick={this.props.onCancelClick} type="reset" className="waves-effect waves-light btn">
             Cancel
           </button>
           <button

@@ -5,11 +5,10 @@ import {useStateValue} from "../context";
 import api from "../api";
 
 const tryToAddFolder = async (dispatch, history, newFolder) => {
-
-  await api.createFolder(newFolder)
+  const savedFolder = await api.createFolder(newFolder)
   dispatch({
     type: 'addFolder',
-    newFolder
+    newFolder: savedFolder
   })
 
   history.push('/')
@@ -27,7 +26,7 @@ function AddFolder() {
   }
 
   return (
-    <FolderForm title="New Folder" onSubmit={addFolder}/>
+    <FolderForm title="New Folder" onSubmit={addFolder} onCancelClick={() => history.push('/')}/>
   );
 }
 
