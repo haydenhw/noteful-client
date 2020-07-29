@@ -25,7 +25,7 @@ function NoteView() {
     }
   }
 
-  const note = notes.find(n => n.id === selectedNoteId)
+  const note = notes.find(n => n.id === +selectedNoteId)
   const folderName = folders.find(f => f.id === note.folder_id).name;
   return (
     <Container>
